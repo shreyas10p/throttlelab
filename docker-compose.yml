@@ -1,0 +1,29 @@
+version: '3'
+services:
+    # db:
+    #     container_name: mysql
+    #     image: mysql
+    #     env_file:
+    #     - envs/mysql.${APP_ENV}.env
+    #     networks:
+    #         - main
+    #     ports:
+    #         - "3306:3306"
+
+    web:
+        container_name: throttlelabs
+        image: throttlelabs
+        build: 
+            context: .
+            dockerfile: docker/web.${APP_ENV}.dockerfile
+        volumes: 
+            - .:/var/www
+        ports: 
+            - "8000:8000"
+        # networks: 
+        #     - main
+        # depends_on: 
+        #     -db
+# networks: 
+#     main:
+#         driver: bridge 
